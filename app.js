@@ -4,6 +4,8 @@ var bodyParse  	= require('body-parser');
 var exSession  	= require('express-session');
 var cookieParser= require('cookie-parser');
 var home  		= require('./controllers/home');
+var category  		= require('./controllers/category');
+
 
 var app 		= express();
 
@@ -11,6 +13,8 @@ app.set('view engine', 'ejs');
 app.use(bodyParse.urlencoded({extended:false}));
 
 app.use('/', home);
+
+app.use('/category', category);
 
 
 // //ROUTING

@@ -1,8 +1,20 @@
 var express = require('express');
 var router = express.Router();
+var category = require('./../models/category');
 
 router.get('/', function(req, res){
-	res.render('home');
+	category.getCategory(function(results){
+
+		category.getMovie(function(movies){
+		
+				res.render('home', {category: results,movies: movies});
+			
+		});
+
+		});
+
+		
+		
 });
 
 
