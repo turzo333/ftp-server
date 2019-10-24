@@ -17,7 +17,7 @@
 		   <header>
 		   	<div class="container">
 				<nav class="navbar navbar-expand-lg navbar-light bg-light">
-				  <a class="navbar-brand" href="#">Navbar</a>
+				  <a class="navbar-brand" href="/">Ftp Server</a>
 				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				    <span class="navbar-toggler-icon"></span>
 				  </button>
@@ -29,6 +29,9 @@
 				        <a class="nav-link" href="/category/<%= category[i].id %>"><%= category[i].name %></a>
 				      </li>
 				     <% } %>
+             <li class="nav-item">
+                <a class="nav-link" href="/request">Request</a>
+              </li>
 				    </ul>
 				    <form class="form-inline my-2 my-lg-0" method="post" action="/category">
 				      <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
@@ -82,6 +85,27 @@
 
 </main>
 
+<div class="container">
+<h1>Request</h1>
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row">
+        <form method="post" class="form-group" action="/request">
+          Name:<input type="text" name="name" class="form-control">
+        Email:  <input type="text" name="email" class="form-control">
+        Content:  <input type="text" name="req"  class="form-control">
+        <br>
+          <input type="submit" class="btn btn-primary">
+        </form>
+
+       
+      </div>
+                <a class="navbar-brand" href="/">Back to Home</a>
+
+    </div>
+  </div>
+</div>
 <footer class="text-muted">
   <div class="container">
     <p class="float-right">

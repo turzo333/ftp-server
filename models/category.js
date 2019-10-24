@@ -50,9 +50,12 @@ module.exports={
 
 	getSearch: function(name,callback){
 
-	var sql = "select * from content where name = ?;";
+	var sql = "select * from content where name like '%"+name+"%';";
 
-				db.getResults(sql, [name], function(results){
+
+	console.log(sql);
+
+				db.getResults(sql, [], function(results){
 
 			console.log(results);
 			if(results.length > 0 ){

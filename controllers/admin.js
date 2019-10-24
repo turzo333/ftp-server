@@ -248,6 +248,104 @@ router.post('/cedit/:id', function(req, res){
 });
 
 
+// Movie
+
+
+
+router.get('/movie', function(req, res){
+
+	if(req.cookies['username'] != null){
+			userModel.getmov(function(results){
+
+
+		
+				res.render('admin/movie', {user: results});
+			
+
+		});
+			
+	}else{
+		res.redirect('login');
+	}
+
+	
+});
+
+
+
+router.get('/addmov', function(req, res){
+	if(req.cookies['username'] != null){
+	res.render('admin/addmov');
+	}else{
+		res.redirect('login');
+	}
+});
+
+router.post('/addmov', function(req, res){
+
+	if(req.cookies['username'] != null){
+
+	var user = {
+		name: req.body.name,
+		parent: req.body.parent
+	};
+
+	userModel.minsert(user, function(status){
+		if(status){
+			res.redirect('/admin/movie');
+		}else{
+			res.redirect('/admin/addmov');
+		}
+	});
+
+	}else{
+		res.redirect('login');
+	}
+});
+
+
+
+
+// router.get('/cedit/:id', function(req, res){
+// 	if(req.cookies['username'] != null){
+
+// 	userModel.getCById(req.params.id, function(results){
+// 		res.render('admin/cedit', {user: results});		
+// 	});
+// 	}else{
+// 		res.redirect('login');
+// 	}
+
+// });
+
+// router.post('/cedit/:id', function(req, res){
+
+// 	if(req.cookies['username'] != null){
+	
+// 	var user = {
+// 		name: req.body.name,
+// 		parent: req.body.parent,
+// 		id: req.params.id
+// 	};
+
+// 	userModel.cupdate(user, function(status){
+
+// 		if(status){
+// 			res.redirect('/admin/category');
+// 		}else{
+// 			res.redirect('/admin/addcate');
+// 		}
+// 	});
+// 	}else{
+// 		res.redirect('login');
+// 	}
+// });
+
+
+
+
+
+
 router.get('/request', function(req, res){
 
 	if(req.cookies['username'] != null){

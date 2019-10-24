@@ -111,7 +111,7 @@ module.exports={
 		db.execute(sql, [],  function(status){
 			callback(status);
 		});
-	}
+	},
 
 
 
@@ -130,21 +130,21 @@ module.exports={
 			}
 		});
 	},
-	cinsert : function(user, callback){
+	minsert : function(user, callback){
 		var sql = "insert into content values('', ?, ?,?,?,?)";
 		db.execute(sql, [user.name, user.des, user.content, user.image, user.category], function(status){
 			callback(status);
 		});
 	},
 
-	cupdate : function(user, callback){
+	mupdate : function(user, callback){
 		var sql = "update category set name=?, des=?, content=?, image=? , category=? where id=?";		
 			db.execute(sql, [user.name, user.des,user.content,user.image,user.category, user.id], function(status){
 				callback(status);
 			});
 		
 	},
-	delete : function(user, callback){
+	mdelete : function(user, callback){
 		//var sql = "insert into user values('','"+ user.username+"', '"+user.password+"')";
 		db.execute(sql, [],  function(status){
 			callback(status);

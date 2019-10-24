@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Movie list</title>
+</head>
+<body>
+	<h1>Movie List</h1>
+
+	<a href="/home">Back</a> |
+	<a href="/logout">logout</a>
+
+<br><br>
+	<table border="1">
+		<tr>
+			<td>ID</td>
+			<td>name</td>
+			<td>Des</td>
+			<td>Content</td>
+			<td>image</td>
+			<td>categoty</td>
+			<td>ACTION</td>
+		</tr>
+
+	<% for(var i=0; i< user.length; i++){ %>
+		<tr>
+			<td><%= user[i].id %></td>
+			<td><%= user[i].name %></td>
+			<td><%= user[i].des %></td>
+			<td><%= user[i].content %></td>
+			<td><img style="
+    width: 80px;
+" src="<%= user[i].image %>" alt=""> </td>
+			<td><%= user[i].cateogory %></td>
+			<td>
+				<a href="/admin/medit/<%= user[i].id %>"> EDIT </a> | 
+				<a href="/admin/mdelete/<%= user[i].id %>"> DELETE </a> | 
+				<a href="/admin/mdetails/<%= user[i].id %>"> Details </a>
+			</td>
+		</tr>
+
+	<% } %>
+	</table>
+</body>
+</html>
