@@ -9,7 +9,20 @@ module.exports={
 
 			//console.log(result);
 			if(result.length > 0 ){
-				callback(result[0]);
+				callback(result);
+			}else{
+				callback([]);
+			}
+		});
+	},
+		getCById: function(id, callback){
+
+		var sql = "select * from category where id=?";
+		db.getResults(sql, [id], function(result){
+
+			//console.log(result);
+			if(result.length > 0 ){
+				callback(result);
 			}else{
 				callback([]);
 			}
@@ -52,12 +65,41 @@ module.exports={
 			});
 		
 	},
+		getCategory: function(callback){
+
+	var sql = "select * from category";
+
+		db.getResults(sql, [], function(results){
+
+			if(results.length > 0 ) {
+				callback(results);
+			}else{
+				callback([]);
+			}
+		});
+	},
+	cinsert : function(user, callback){
+		var sql = "insert into category values('', ?, ?)";
+		db.execute(sql, [user.name, user.parent], function(status){
+			callback(status);
+		});
+	},
+
+	cupdate : function(user, callback){
+		var sql = "update category set name=?, parent=? where id=?";		
+			db.execute(sql, [user.name, user.parent, user.id], function(status){
+				callback(status);
+			});
+		
+	},
 	delete : function(user, callback){
 		//var sql = "insert into user values('','"+ user.username+"', '"+user.password+"')";
 		db.execute(sql, [],  function(status){
 			callback(status);
 		});
 	}
+
+	
 }	
 
 

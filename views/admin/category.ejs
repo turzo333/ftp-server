@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Category</title>
+</head>
+<body>
+	<h1>User List</h1>
+
+	<a href="/home">Back</a> |
+	<a href="/logout">logout</a>
+
+<br><br>
+	<table border="1">
+		<tr>
+			<td>ID</td>
+			<td>Name</td>
+			<td>Parent</td>
+			<td>ACTION</td>
+		</tr>
+
+	<% for(var i=0; i< category.length; i++){ %>
+		<tr>
+			<td><%= category[i].id %></td>
+			<td><%= category[i].name %></td>
+			<td><%= category[i].parent %></td>
+			<td>
+				<a href="/admin/cedit/<%= category[i].id %>"> EDIT </a> | 
+				<a href="/admin/cdelete/<%= category[i].id %>"> DELETE </a> | 
+				<a href="/admin/cdetails/<%= category[i].id %>"> Details </a>
+			</td>
+		</tr>
+
+	<% } %>
+	</table>
+</body>
+</html>

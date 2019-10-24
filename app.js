@@ -8,6 +8,8 @@ var category  		= require('./controllers/category');
 var movie  		= require('./controllers/movie');
 var request  		= require('./controllers/request');
 var admin  		= require('./controllers/admin');
+var logout  	= require('./controllers/logout');
+
 
 
 
@@ -26,6 +28,7 @@ app.use('/movie', movie);
 app.use('/request', request);
 app.use('/admin', admin);
 
+app.use('/logout', logout);
 
 
 // //ROUTING
