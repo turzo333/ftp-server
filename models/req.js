@@ -1,4 +1,4 @@
-var db = require('./db');
+req.jsvar db = require('./db');
 
 module.exports={
 
