@@ -1,35 +1,44 @@
 var express = require('express');
 var router = express.Router();
-var category = require('./../models/category');
+var req = require('./../models/req');
 
-router.get('/:id', function(req, res){
-
-	category.getCategory(function(results1){
-	category.getCategoryById(req.params.id,function(results){
-
+router.get('/', function(req, res){
+	
 		
-		console.log(req.params.id);
-				res.render('category', {movies: results,category: results1});
+				res.render('req');
 			
 
-		});
-	});
 
 		
 		
 });
+
 router.post('/', function(req, res){
 
-	category.getCategory(function(results1){
-	category.getSearch(req.body.search,function(results){
+	var req = {
+		name: req.body.name,
+		email: req.body.email,
+		req: req.body.req
+
+	};
+
+	req.reqAdd(req,function(results){
 
 		
 		console.log(req.body.search);
-				res.render('category', {movies: results,category: results1});
+
+		if ($results) {
+
+			res.redirect('/');
+
+		}else{
+
+				res.redirect('/request');
+
+			}
 			
 
 		});
-	});
 
 		
 		
