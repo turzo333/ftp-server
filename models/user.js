@@ -52,9 +52,23 @@ module.exports={
 			}
 		});
 	},
+
+
+	getReq : function(callback){
+		var sql = "select * from req";
+
+		db.getResults(sql, [], function(results){
+
+			if(results.length > 0 ) {
+				callback(results);
+			}else{
+				callback([]);
+			}
+		});
+	},
 	insert : function(user, callback){
-		var sql = "insert into user values('', ?, ?)";
-		db.execute(sql, [user.username, user.password], function(status){
+		var sql = "insert into user values('', ?, ?,?)";
+		db.execute(sql, [user.username, user.password,user.is_admin], function(status){
 			callback(status);
 		});
 	},
@@ -88,6 +102,44 @@ module.exports={
 	cupdate : function(user, callback){
 		var sql = "update category set name=?, parent=? where id=?";		
 			db.execute(sql, [user.name, user.parent, user.id], function(status){
+				callback(status);
+			});
+		
+	},
+	delete : function(user, callback){
+		//var sql = "insert into user values('','"+ user.username+"', '"+user.password+"')";
+		db.execute(sql, [],  function(status){
+			callback(status);
+		});
+	}
+
+
+
+
+
+	getmov: function(callback){
+
+	var sql = "select * from content";
+
+		db.getResults(sql, [], function(results){
+
+			if(results.length > 0 ) {
+				callback(results);
+			}else{
+				callback([]);
+			}
+		});
+	},
+	cinsert : function(user, callback){
+		var sql = "insert into content values('', ?, ?,?,?,?)";
+		db.execute(sql, [user.name, user.des, user.content, user.image, user.category], function(status){
+			callback(status);
+		});
+	},
+
+	cupdate : function(user, callback){
+		var sql = "update category set name=?, des=?, content=?, image=? , category=? where id=?";		
+			db.execute(sql, [user.name, user.des,user.content,user.image,user.category, user.id], function(status){
 				callback(status);
 			});
 		

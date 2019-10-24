@@ -76,6 +76,7 @@ router.post('/adduser', function(req, res){
 
 	var user = {
 		username: req.body.username,
+		is_admin: req.body.is_admin,
 		password: req.body.password
 	};
 
@@ -244,6 +245,26 @@ router.post('/cedit/:id', function(req, res){
 	}else{
 		res.redirect('login');
 	}
+});
+
+
+router.get('/request', function(req, res){
+
+	if(req.cookies['username'] != null){
+			userModel.getReq(function(results){
+
+
+		
+				res.render('admin/request', {request: results});
+			
+
+		});
+			
+	}else{
+		res.redirect('login');
+	}
+
+	
 });
 
 

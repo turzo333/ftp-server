@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Request</title>
+</head>
+<body>
+	<h1>Request List</h1>
+
+	<a href="/home">Back</a> |
+	<a href="/logout">logout</a>
+
+<br><br>
+	<table border="1">
+		<tr>
+			<td>ID</td>
+			<td>Name</td>
+			<td>Email</td>
+			<td>Content</td>
+		</tr>
+
+	<% for(var i=0; i< request.length; i++){ %>
+		<tr>
+			<td><%= request[i].id %></td>
+			<td><%= request[i].name %></td>
+			<td><%= request[i].email %></td>
+			<td><%= request[i].req %></td>
+			
+		</tr>
+
+	<% } %>
+	</table>
+</body>
+</html>
