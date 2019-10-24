@@ -10,12 +10,13 @@ var app 		= express();
 app.set('view engine', 'ejs');
 app.use(bodyParse.urlencoded({extended:false}));
 
+app.use('/', home);
 
 
-//ROUTING
-app.get('/', function(req, res){
-	res.send('<h2>hello from express</h2>');
-});
+// //ROUTING
+// app.get('/', function(req, res){
+// 	res.send('<h2>hello from express</h2>');
+// });
 
 
 //SERVER STARTUP
