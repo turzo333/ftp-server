@@ -7,6 +7,8 @@ var home  		= require('./controllers/home');
 var category  		= require('./controllers/category');
 var movie  		= require('./controllers/movie');
 var request  		= require('./controllers/request');
+var admin  		= require('./controllers/admin');
+
 
 
 
@@ -14,12 +16,15 @@ var app 		= express();
 
 app.set('view engine', 'ejs');
 app.use(bodyParse.urlencoded({extended:false}));
+app.use(exSession({secret:"my top secret value", saveUninitialized:true, resave:false}));
+app.use(cookieParser());
 
 app.use('/', home);
 
 app.use('/category', category);
 app.use('/movie', movie);
 app.use('/request', request);
+app.use('/admin', admin);
 
 
 

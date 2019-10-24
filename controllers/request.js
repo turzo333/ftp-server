@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var req = require('./../models/req');
+var request = require('./../models/req');
 
 router.get('/', function(req, res){
 	
@@ -15,19 +15,19 @@ router.get('/', function(req, res){
 
 router.post('/', function(req, res){
 
-	var req = {
+	var request1 = {
 		name: req.body.name,
 		email: req.body.email,
 		req: req.body.req
 
 	};
 
-	req.reqAdd(req,function(results){
+	request.reqAdd(request1,function(status){
 
 		
 		console.log(req.body.search);
 
-		if ($results) {
+		if (status) {
 
 			res.redirect('/');
 

@@ -1,11 +1,11 @@
 var db = require('./db');
 module.exports={
 
-	reqAdd: function(req,callback){
+	reqAdd: function(request,callback){
 
 
 		var sql = "insert into req values('', ?, ?,?)";
-		db.execute(sql, [req.name, req.email, req.req], function(status){
+		db.execute(sql, [request.name, request.email, request.req], function(status){
 			callback(status);
 		});
 	},
